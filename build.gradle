@@ -1,0 +1,74 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '2.7.17'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//WEB
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//THYMELEAF
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	//LOMBOK
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	//SECURITY
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+	//OAUTH2
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	//FILE UPLOAD
+	implementation 'commons-fileupload:commons-fileupload:1.5'
+
+	//TEST
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+
+	//DATABASE
+	implementation 'com.mysql:mysql-connector-j:8.1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+	//ORM_JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	//02CONTROLLER_VALIDATION
+	implementation 'org.hibernate.validator:hibernate-validator'
+	implementation 'javax.validation:validation-api'
+
+	//MAIL
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.1'
+
+	//RESTCONTROLLER ADDED
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.2'
+	implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
